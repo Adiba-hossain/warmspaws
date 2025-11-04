@@ -1,15 +1,14 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
-import app from "../firebase/firebase.config";
 import { toast } from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
 
-const auth = getAuth(app);
-const googleProvider = new GoogleAuthProvider();
+// const auth = getAuth(app);
+// const googleProvider = new GoogleAuthProvider();
 
 const Login = () => {
-  const { signIn, setUser, setLoading } = useContext(AuthContext);
+  const { signIn, setUser, setLoading, googleSignIn } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,7 +34,7 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    signInWithPopup(auth, googleProvider)
+    googleSignIn()
       .then((res) => {
         setUser(res.user);
         toast.success("Logged in with Google! 🐾");
@@ -95,7 +94,7 @@ const Login = () => {
         <div className="mt-6 text-center">
           <p className="text-gray-600 text-sm">
             New to WarmPaws?{" "}
-            <Link to="/auth/register" className="text-blue-600 hover:underline">
+            <Link to="/register" className="text-blue-600 hover:underline">
               Sign Up
             </Link>
           </p>
@@ -103,13 +102,11 @@ const Login = () => {
           <div className="mt-4">
             <button
               onClick={handleGoogleLogin}
-              className="w-full border border-gray-300 py-2 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-100 transition"
+              className="w-full border border-gray-300 py-2 rounded-lg flex items-center justify-center gap-2 bg-gray-200 hover:bg-gray-300 transition"
             >
-              <img
-                src="https://www.svgrepo.com/show/475656/google-color.svg"
-                alt="Google"
-                className="w-5 h-5"
-              />
+              <div>
+                <FcGoogle size={24} />
+              </div>
               <span>Continue with Google</span>
             </button>
           </div>
