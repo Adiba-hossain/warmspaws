@@ -1,0 +1,74 @@
+[
+  {
+    "serviceId": 1,
+    "serviceName": "Winter Coat Fitting for Dogs",
+    "providerName": "PawCare Studio",
+    "providerEmail": "info@pawcare.com",
+    "price": 25,
+    "rating": 4.9,
+    "slotsAvailable": 4,
+    "description": "Custom coat fitting and warm outfit options to keep your dog comfortable in the cold.",
+    "image": "https://i.ibb.co.com/676qYpGr/portrait-cute-warmly-dressed-pug-600nw-2259186827.webp",
+    "category": "Clothing"
+  },
+  {
+    "serviceId": 2,
+    "serviceName": "Paw Treatment",
+    "providerName": "CozyPets Grooming",
+    "providerEmail": "hello@cozypets.com",
+    "price": 30,
+    "rating": 4.8,
+    "slotsAvailable": 3,
+    "description": "Professional grooming with moisturizing paw balm and winter-safe shampoo.",
+    "image": "https://i.ibb.co.com/d4rMQ0CY/girl-with-dog.jpg",
+    "category": "Grooming"
+  },
+  {
+    "serviceId": 3,
+    "serviceName": "Heated Bed Install Guidance",
+    "providerName": "WarmNest Experts",
+    "providerEmail": "support@warmnest.com",
+    "price": 15,
+    "rating": 4.7,
+    "slotsAvailable": 6,
+    "description": "Advice & in-home guidance for safe heated bedding options for pets.",
+    "image": "https://i.ibb.co.com/1YXxJL5j/adorable-white-little-puppy-isolated-blue.jpg",
+    "category": "Accessories"
+  },
+  {
+    "serviceId": 4,
+    "serviceName": "Hypoallergenic Winter Bath",
+    "providerName": "SilkyPaws Salon",
+    "providerEmail": "contact@silkypaws.com",
+    "price": 35,
+    "rating": 4.6,
+    "slotsAvailable": 2,
+    "description": "Moisturizing shampoo treatment to prevent dry skin in winter months.",
+    "image": "https://i.ibb.co.com/6cxHZyRF/view-adorable-persian-domestic-cat.jpg",
+    "category": "Grooming"
+  },
+  {
+    "serviceId": 5,
+    "serviceName": "Cold-Weather Nutritional Plan",
+    "providerName": "VetNutrition Co.",
+    "providerEmail": "diet@vetnutrition.com",
+    "price": 40,
+    "rating": 4.85,
+    "slotsAvailable": 5,
+    "description": "Vet-approved nutritional adjustments for pets during colder seasons.",
+    "image": "https://i.ibb.co.com/7NJYFF6M/cute-pug-wearing-checkered-scarf-near-cupcake.jpg",
+    "category": "Nutrition"
+  },
+  {
+    "serviceId": 6,
+    "serviceName": "Short-Walk Training for Ice",
+    "providerName": "SafeWalk Trainers",
+    "providerEmail": "train@safe-walk.com",
+    "price": 20,
+    "rating": 4.5,
+    "slotsAvailable": 8,
+    "description": "Training sessions to teach leash safety and paw protection on icy surfaces.",
+    "image": "https://i.ibb.co.com/mCJp4tDK/family-having-fun-snow.jpg",
+    "category": "Training"
+  }
+]

@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "tailwindcss";
+
+@plugin "daisyui";
+
+@theme {
+  --default-theme: light;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+
+/* ❄️ Snowflake Container */
+.snowflakes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* ❄️ Individual Snowflake Style */
+.snowflake {
+  position: absolute;
+  color: #ffffffcc;
+  font-size: 1.5rem;
+  user-select: none;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+  /* Start at random vertical position for continuous effect */
+  top: calc(-100px + (100vh * var(--start-pos)));
+  opacity: 0.9;
+}
+
+/* 🌀 Fall Animation */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+/* 🌨️ Randomized Snowflake Positions, Speeds & Sizes */
+.snowflake:nth-child(1) {
+  left: 5%;
+  --start-pos: 0.2;
+  animation-duration: 10s;
+  animation-delay: 0s;
+  font-size: 1.3rem;
+}
+.snowflake:nth-child(2) {
+  left: 15%;
+  --start-pos: 0.6;
+  animation-duration: 12s;
+  animation-delay: 2s;
+  font-size: 1.7rem;
+}
+.snowflake:nth-child(3) {
+  left: 25%;
+  --start-pos: 0.8;
+  animation-duration: 14s;
+  animation-delay: 1s;
+  font-size: 1.2rem;
+}
+.snowflake:nth-child(4) {
+  left: 35%;
+  --start-pos: 0.1;
+  animation-duration: 9s;
+  animation-delay: 3s;
+  font-size: 1.5rem;
+}
+.snowflake:nth-child(5) {
+  left: 45%;
+  --start-pos: 0.5;
+  animation-duration: 11s;
+  animation-delay: 4s;
+  font-size: 1.8rem;
+}
+.snowflake:nth-child(6) {
+  left: 55%;
+  --start-pos: 0.7;
+  animation-duration: 13s;
+  animation-delay: 2s;
+  font-size: 1.4rem;
+}
+.snowflake:nth-child(7) {
+  left: 65%;
+  --start-pos: 0.3;
+  animation-duration: 9s;
+  animation-delay: 1s;
+  font-size: 1.6rem;
+}
+.snowflake:nth-child(8) {
+  left: 75%;
+  --start-pos: 0.9;
+  animation-duration: 10s;
+  animation-delay: 3s;
+  font-size: 1.3rem;
+}
+.snowflake:nth-child(9) {
+  left: 85%;
+  --start-pos: 0.4;
+  animation-duration: 14s;
+  animation-delay: 5s;
+  font-size: 1.9rem;
+}
+.snowflake:nth-child(10) {
+  left: 95%;
+  --start-pos: 0.75;
+  animation-duration: 9s;
+  animation-delay: 4s;
+  font-size: 1.5rem;
+}
+.snowflake:nth-child(11) {
+  left: 10%;
+  --start-pos: 0.6;
+  animation-duration: 13s;
+  animation-delay: 6s;
+  font-size: 1.3rem;
+}
+.snowflake:nth-child(12) {
+  left: 30%;
+  --start-pos: 0.2;
+  animation-duration: 10s;
+  animation-delay: 7s;
+  font-size: 1.8rem;
+}
+.snowflake:nth-child(13) {
+  left: 50%;
+  --start-pos: 0.45;
+  animation-duration: 12s;
+  animation-delay: 5s;
+  font-size: 1.6rem;
+}
+.snowflake:nth-child(14) {
+  left: 70%;
+  --start-pos: 0.8;
+  animation-duration: 11s;
+  animation-delay: 3s;
+  font-size: 1.4rem;
+}
+.snowflake:nth-child(15) {
+  left: 90%;
+  --start-pos: 0.65;
+  animation-duration: 10s;
+  animation-delay: 1s;
+  font-size: 1.5rem;
+}
+
+/* 💫 Fix Swiper Fade Overlap Issue */
+.swiper-slide {
+  opacity: 0 !important;
+  transition: opacity 1s ease-in-out !important;
+}
+
+.swiper-slide-active {
+  opacity: 1 !important;
+}
