@@ -5,6 +5,7 @@ import ServiceCardDetails from "../pages/ServiceCardDetails";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Services from "../pages/Services";
+import ErrorPage from "../pages/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
   // },
   {
     path: "/*",
-    element: <h2>Error404</h2>,
+    element: <ErrorPage></ErrorPage>,
   },
 ]);
 
