@@ -4,14 +4,14 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
-// const auth = getAuth(app);
-// const googleProvider = new GoogleAuthProvider();
-
 const Login = () => {
   const { signIn, setUser, setLoading, googleSignIn } = useContext(AuthContext);
+
   const [error, setError] = useState("");
+
   const navigate = useNavigate();
   const location = useLocation();
+
   const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {

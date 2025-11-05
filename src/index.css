@@ -4,6 +4,8 @@
 
 @plugin "daisyui";
 
+/* @import "animate.css/animate.min.css"; */
+
 @theme {
   --default-theme: light;
 }
