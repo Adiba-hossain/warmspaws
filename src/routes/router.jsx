@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router";
 import HomeLayout from "../layouts/HomeLayout";
 import Home from "../pages/Home";
-import ServiceCardDetails from "../pages/ServiceCardDetails";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import Services from "../pages/Services";
 import ErrorPage from "../pages/ErrorPage";
+import ProtectedRoute from "../provider/ProtectedRoute";
+import ServiceDetails from "../pages/ServiceDetails";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/service/:id",
-        element: <ServiceCardDetails />,
+        element: (
+          <ProtectedRoute>
+            <ServiceDetails />
+          </ProtectedRoute>
+        ),
         loader: () => fetch("/services.json"),
       },
       {

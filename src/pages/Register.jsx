@@ -38,7 +38,7 @@ const Register = () => {
 
     setLoading(true);
     try {
-      const res = await createUser(email, password);
+      await createUser(email, password);
       // Update profile
       await updateUser({ displayName: name, photoURL });
       toast.success("Account created successfully!");
