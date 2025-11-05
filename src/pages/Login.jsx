@@ -1,3 +1,4 @@
+//
 import React, { useState, useContext } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import Loading from "../components/Loading";
@@ -10,23 +11,18 @@ const Login = () => {
   const {
     signIn,
     googleSignIn,
-
     loading: authLoading,
   } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
-
   const [password, setPassword] = useState("");
-
   const [loading, setLoading] = useState(false);
-
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  // If Firebase is still loading user state
   if (authLoading) return <Loading />;
 
   const handleLogin = async (e) => {
@@ -64,8 +60,6 @@ const Login = () => {
           Login to WarmPaws 🐾
         </h2>
         <form onSubmit={handleLogin} className="space-y-4">
-          {/* email field  */}
-
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Email
@@ -79,13 +73,10 @@ const Login = () => {
             />
           </div>
 
-          {/* password field */}
-
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Password
             </label>
-
             <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
@@ -95,7 +86,7 @@ const Login = () => {
                 required
               />
               <span
-                className="absolute right-2 top-4.25 cursor-pointer text-gray-600"
+                className="absolute right-2 top-4 cursor-pointer text-gray-600"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
@@ -108,34 +99,42 @@ const Login = () => {
               Forgot Password?
             </Link>
           </div>
+
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-blue-500 to-pink-500 text-white py-2 rounded"
+            className={`w-full py-2 rounded-lg text-white transition transform ${
+              loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-gradient-to-r from-blue-500 to-pink-500 hover:scale-105"
+            }`}
           >
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
+
         <button
           onClick={handleGoogle}
-          disabled={authLoading} // use the correct loading variable
+          disabled={authLoading}
           className="w-full border border-gray-300 py-2 rounded-lg flex items-center justify-center gap-2 bg-gray-200 hover:bg-gray-300 transition disabled:opacity-70 mt-4"
         >
           {authLoading ? (
             "Please wait..."
           ) : (
             <>
-              <FcGoogle size={24} />
-              Login with Google
+              <FcGoogle size={24} /> Login with Google
             </>
           )}
         </button>
 
         <p className="mt-4 text-center text-gray-600 text-sm">
           Don’t have an account?{" "}
-          <Link to="/register" className="text-blue-600 hover:underline">
+          <button
+            onClick={() => navigate("/register")}
+            className="text-blue-600 hover:underline"
+          >
             Sign Up
-          </Link>
+          </button>
         </p>
       </div>
     </div>

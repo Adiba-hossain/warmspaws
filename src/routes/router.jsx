@@ -7,6 +7,8 @@ import Services from "../pages/Services";
 import ErrorPage from "../pages/ErrorPage";
 import ProtectedRoute from "../provider/ProtectedRoute";
 import ServiceDetails from "../pages/ServiceDetails";
+import MyProfile from "../pages/MyProfile";
+import ForgotPassword from "../pages/ForgotPassword";
 
 const router = createBrowserRouter([
   {
@@ -38,31 +40,20 @@ const router = createBrowserRouter([
         path: "/services",
         element: <Services />,
       },
+      {
+        path: "/profile",
+        element: (
+          <ProtectedRoute>
+            <MyProfile />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword />,
+      },
     ],
   },
-  // {
-  //   path: "/auth",
-  //   element: <AuthLayout></AuthLayout>,
-  //   children: [
-  //     {
-  //       path: "/auth/login",
-  //       element: <Login></Login>,
-  //     },
-  //     {
-  //       path: "/auth/register",
-  //       element: <Register></Register>,
-  //     },
-  //   ],
-  // },
-  // {
-  //   path: "/news-details/:id",
-  //   element: (
-  //     <PrivateRoute>
-  //       <NewsDetails></NewsDetails>
-  //     </PrivateRoute>
-  //   ),
-  //   loader: () => fetch("/news.json"),
-  // },
   {
     path: "/*",
     element: <ErrorPage></ErrorPage>,

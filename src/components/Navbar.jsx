@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";
+// Navbar.jsx
+import React, { useState, useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { getAuth, signOut } from "firebase/auth";
@@ -107,18 +108,19 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <Link
-                to="/login"
+              {/* Use navigate() to force React Router navigation */}
+              <button
+                onClick={() => navigate("/login")}
                 className="text-blue-600 font-medium hover:underline"
               >
                 Login
-              </Link>
-              <Link
-                to="/register"
+              </button>
+              <button
+                onClick={() => navigate("/register")}
                 className="bg-gradient-to-r from-blue-500 to-pink-500 text-white px-4 py-1 rounded-lg hover:opacity-90 transition"
               >
                 Register
-              </Link>
+              </button>
             </>
           )}
         </div>
@@ -162,20 +164,24 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link
-                  to="/login"
-                  onClick={() => setIsMenuOpen(false)}
+                <button
+                  onClick={() => {
+                    navigate("/login");
+                    setIsMenuOpen(false);
+                  }}
                   className="text-blue-600 font-medium hover:underline"
                 >
                   Login
-                </Link>
-                <Link
-                  to="/register"
-                  onClick={() => setIsMenuOpen(false)}
+                </button>
+                <button
+                  onClick={() => {
+                    navigate("/register");
+                    setIsMenuOpen(false);
+                  }}
                   className="bg-gradient-to-r from-blue-500 to-pink-500 text-white px-4 py-1 rounded-lg hover:opacity-90 transition"
                 >
                   Register
-                </Link>
+                </button>
               </>
             )}
           </div>
