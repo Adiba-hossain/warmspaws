@@ -1,4 +1,3 @@
-//
 import React, { useState, useContext } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import Loading from "../components/Loading";

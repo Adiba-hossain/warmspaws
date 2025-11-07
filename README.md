@@ -1,16 +1,46 @@
-# React + Vite
+# WarmPaws – Pet Care in Winter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Project purpose**  
+A cozy winter companion platform for pet owners to find local winter pet services, clothing, grooming & expert advice.
 
-Currently, two official plugins are available:
+**Live Demo**  
+Live URL: https://project-e6142.web.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
 
-## React Compiler
+- Responsive SPA (mobile/tablet/desktop)
+- Authentication: Email/password + Google sign-in (Firebase)
+- Protected service detail pages (redirect to login and back)
+- Service listing loaded from `/services.json`
+- Service booking form with success toast (no backend)
+- Profile page with user info & update button
+- Swiper hero slider and subtle animations (AOS/Framer Motion)
+- Password validation and toggle (eye) feature
+- Environment variables used for Firebase keys
+- Deployed on Firebase Hosting
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## NPM packages used
 
-## Expanding the ESLint configuration
+- react-router-dom
+- firebase
+- react-hot-toast
+- swiper
+- aos
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Setup
+
+1. `git clone <repo>`
+2. `npm install`
+3. Create `.env.local` with your Firebase config (see firebaseConfig.js)
+4. `npm start`
+
+## Deployment
+
+- Ensure authorized domain is added in Firebase Auth.
+- If deploying to Netlify, add `_redirects` -> `/* /index.html 200`
+- If using Firebase Hosting, add rewrites to `index.html` in `firebase.json`.
+
+## Notes
+
+- Replace placeholder images with your `imgbb.com` links.
+- Don’t commit `.env.local`.

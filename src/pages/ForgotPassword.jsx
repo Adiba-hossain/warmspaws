@@ -24,14 +24,13 @@ const ForgotPassword = () => {
       await forgetPassword(email);
       toast.success("Password reset email sent! Opening Gmail...");
 
-      // Reset loading immediately before opening Gmail
       setLoading(false);
 
       // Open Gmail in new tab
       window.open("https://mail.google.com/", "_blank");
     } catch (err) {
       toast.error(err.message);
-      setLoading(false); // ensure loading is reset if error occurs
+      setLoading(false);
     }
   };
 
