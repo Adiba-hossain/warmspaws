@@ -11,6 +11,7 @@ const Register = () => {
     createUser,
     googleSignIn,
     updateUser,
+    setUser,
     loading: authLoading,
   } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -42,8 +43,9 @@ const Register = () => {
 
     setLoading(true);
     try {
-      await createUser(email, password);
+      const result = await createUser(email, password);
       await updateUser({ displayName: name, photoURL });
+      setUser({ ...result.user, displayName: name, photoURL }); // update context
       toast.success("Account created successfully!");
       navigate("/");
     } catch (err) {
@@ -56,7 +58,12 @@ const Register = () => {
   const handleGoogle = async () => {
     setLoading(true);
     try {
-      await googleSignIn();
+      const result = await googleSignIn();
+      const loggedInUser = result.user;
+
+      // Set context with Google user (includes profile picture)
+      setUser(loggedInUser);
+
       toast.success("Logged in with Google!");
       navigate("/");
     } catch (err) {
@@ -151,10 +158,10 @@ const Register = () => {
 
         <button
           onClick={handleGoogle}
-          disabled={authLoading}
+          disabled={loading}
           className="w-full border border-gray-300 py-2 rounded-lg flex items-center justify-center gap-2 bg-gray-200 hover:bg-gray-300 transition disabled:opacity-70 mt-4"
         >
-          {authLoading ? (
+          {loading ? (
             "Please wait..."
           ) : (
             <>

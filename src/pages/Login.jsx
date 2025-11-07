@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
-  const { signIn, googleSignIn } = useContext(AuthContext);
+  const { signIn, googleSignIn, setUser } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,38 +16,33 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Function to determine redirect destination
   const getRedirectPath = () => {
-    // 1️⃣ Prefer React Router state (if available)
     const stateFrom = location.state?.from?.pathname
       ? location.state.from.pathname + (location.state.from.search || "")
       : null;
 
     if (stateFrom) return stateFrom;
 
-    // 2️⃣ Otherwise, fallback to what was stored in localStorage
     const stored = localStorage.getItem("redirectAfterLogin");
     if (stored) return stored;
 
-    // 3️⃣ Default fallback
     return "/";
   };
 
-  // 🔐 Handle email-password login
+  // Handle email-password login
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await signIn(email, password);
+      const result = await signIn(email, password);
+      const loggedInUser = result.user;
+      setUser(loggedInUser);
       toast.success("Login successful!");
 
-      // Determine redirect path
       const redirectPath = getRedirectPath();
 
-      // Remove saved path after using it
       localStorage.removeItem("redirectAfterLogin");
 
-      // Navigate back to intended page
       navigate(redirectPath, { replace: true });
     } catch (err) {
       const errorMsg =
@@ -62,13 +57,19 @@ const Login = () => {
     }
   };
 
-  // 🟢 Handle Google Sign-In
+  // Handle Google Sign-In
   const handleGoogle = async () => {
     setLoading(true);
     try {
-      await googleSignIn();
+      const result = await googleSignIn();
+      const loggedInUser = result.user;
+
+      // Set the user in context immediately
+      setUser(loggedInUser);
+
       toast.success("Logged in with Google!");
 
+      // Get the redirect path stored before login or default to "/"
       const redirectPath = getRedirectPath();
       localStorage.removeItem("redirectAfterLogin");
 
