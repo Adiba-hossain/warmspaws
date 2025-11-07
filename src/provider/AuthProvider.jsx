@@ -14,6 +14,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import Loading from "../components/Loading";
 
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
@@ -72,6 +73,10 @@ const AuthProvider = ({ children }) => {
     forgetPassword,
     logOut,
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return <AuthContext value={authData}>{children}</AuthContext>;
 };

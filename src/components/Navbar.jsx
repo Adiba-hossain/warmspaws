@@ -71,7 +71,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gradient-to-r from-blue-100 to-pink-100 shadow-md sticky top-0 z-50">
-      <div className="w-11/12 mx-auto flex justify-between items-center py-3">
+      <div className="max-w-7xl mx-auto flex justify-between items-center py-3">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-1 justify-center">
           <img src="/logo.png" alt="WarmPaws Logo" className="w-15 h-15" />

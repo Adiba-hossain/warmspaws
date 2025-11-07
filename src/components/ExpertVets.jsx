@@ -32,7 +32,7 @@ const ExpertVets = () => {
 
   return (
     <section className="bg-gradient-to-r from-blue-50 via-white to-blue-100 py-16">
-      <div className="max-w-6xl mx-auto px-6 text-center">
+      <div className="max-w-7xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold text-blue-800 mb-10">
           🩺 Meet Our Expert Vets
         </h2>
