@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-blue-300 via-pink-200 to-purple-300 text-gray-800">
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
-        {/* LEFT: Contact Info */}
+        {/* Left: Contact Info */}
         <div>
           <h3 className="text-xl font-semibold mb-4 text-black">Contact Us</h3>
           <ul className="space-y-2 text-gray">
@@ -33,7 +33,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        {/* CENTER: Social Links */}
+        {/* Center: Social Links */}
         <div className="flex flex-col items-center">
           <h3 className="text-xl font-semibold mb-4 text-black">Follow Us</h3>
           <div className="flex gap-4 text-2xl">
@@ -67,7 +67,7 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* RIGHT: Quick Links */}
+        {/* Right: Quick Links */}
         <div>
           <h3 className="text-xl font-semibold mb-4 text-black">Quick Links</h3>
           <ul className="space-y-3 text-gray">
@@ -75,7 +75,7 @@ const Footer = () => {
               <a
                 href="https://www.privacypolicies.com/live/2a4e5f1d-dc47-41d6-8393-0e7c1a8b4b23"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-blue-600 transition transform hover:scale-105"
               >
                 <FaShieldAlt className="text-blue-500" /> Privacy Policy
@@ -85,7 +85,7 @@ const Footer = () => {
               <a
                 href="https://www.termsandconditionsgenerator.com/live.php?token=Qx0K2wH5xk5qR1fZ"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-purple-600 transition transform hover:scale-105"
               >
                 <FaFileContract className="text-purple-500" /> Terms &
@@ -96,7 +96,7 @@ const Footer = () => {
               <a
                 href="https://www.contactus.com/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-orange-600 transition transform hover:scale-105"
               >
                 <FaHeadset className="text-orange-500" /> Contact Support
@@ -106,7 +106,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Line */}
+      {/* End Line */}
       <div className="border-t border-white/30 py-4 text-center text-sm text-gray">
         © {new Date().getFullYear()}{" "}
         <span className="font-semibold text-black">WarmPaws</span>. All rights

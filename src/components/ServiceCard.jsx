@@ -5,7 +5,6 @@ const ServiceCard = ({ service }) => {
   const { image, serviceName, rating, description, price, serviceId } = service;
   return (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative group flex flex-col h-full">
-      {/* Frosty Glow Border */}
       <div className="absolute inset-0 border-2 border-transparent rounded-2xl group-hover:border-blue-200 group-hover:shadow-[0_0_25px_5px_rgba(173,216,230,0.6)] transition-all duration-500 pointer-events-none"></div>
 
       <img
@@ -30,8 +29,7 @@ const ServiceCard = ({ service }) => {
 
         <Link
           to={`/service/${serviceId}`}
-          target="_blank"
-          rel="noopener noreferrer"
+          // target="_blank"
           className="mt-4 inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-pink-500 text-white py-2 rounded-lg   hover:from-blue-700 hover:to-pink-700 transition-all shadow-md"
         >
           <Info className="w-4 h-4 mr-2" />
