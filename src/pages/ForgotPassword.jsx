@@ -1,7 +1,10 @@
+//
+
 import React, { useState, useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { getAuth } from "firebase/auth";
 
 const ForgotPassword = () => {
   const { forgetPassword, loading: authLoading } = useContext(AuthContext);
@@ -24,10 +27,15 @@ const ForgotPassword = () => {
       await forgetPassword(email);
       toast.success("Password reset email sent! Opening Gmail...");
 
-      setLoading(false);
-
-      // Open Gmail in new tab
+      // ✅ Open Gmail in a new tab
       window.open("https://mail.google.com/", "_blank");
+
+      // ✅ Sign out to clear stale auth state but stay on this page
+      const auth = getAuth();
+      await auth.signOut();
+
+      // ✅ Stop loading and stay on the page
+      setLoading(false);
     } catch (err) {
       toast.error(err.message);
       setLoading(false);
@@ -60,18 +68,19 @@ const ForgotPassword = () => {
             type="submit"
             disabled={loading || authLoading}
             className={`w-full py-2 rounded-lg text-white transition transform
-    ${
-      loading || authLoading
-        ? "bg-gradient-to-r from-blue-300 to-pink-300 cursor-not-allowed opacity-70"
-        : "bg-gradient-to-r from-blue-500 to-pink-500 hover:scale-105"
-    }`}
+              ${
+                loading || authLoading
+                  ? "bg-gradient-to-r from-blue-300 to-pink-300 cursor-not-allowed opacity-70"
+                  : "bg-gradient-to-r from-blue-500 to-pink-500 hover:scale-105"
+              }`}
           >
             {loading ? "Sending..." : "Reset Password"}
           </button>
         </form>
 
         <p className="mt-4 text-center text-gray-600 text-sm">
-          Check your email to reset your password. Gmail will open in a new tab.
+          A password reset email has been sent. Gmail will open in a new tab —
+          once you reset it, you can return here and log in again.
         </p>
       </div>
     </div>

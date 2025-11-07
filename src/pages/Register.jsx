@@ -45,7 +45,7 @@ const Register = () => {
       await createUser(email, password);
       await updateUser({ displayName: name, photoURL });
       toast.success("Account created successfully!");
-      navigate("/login");
+      navigate("/");
     } catch (err) {
       toast.error(err.message);
     } finally {

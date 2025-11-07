@@ -1,4 +1,3 @@
-// ProtectedRoute.jsx
 import React, { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
@@ -11,6 +10,11 @@ const ProtectedRoute = ({ children }) => {
   if (loading) return <Loading />;
 
   if (!user) {
+    // store full path (pathname + search) only if not already present
+    if (!localStorage.getItem("redirectAfterLogin")) {
+      const fullPath = location.pathname + (location.search || "");
+      localStorage.setItem("redirectAfterLogin", fullPath);
+    }
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 

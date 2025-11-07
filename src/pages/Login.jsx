@@ -1,49 +1,78 @@
 import React, { useState, useContext } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import Loading from "../components/Loading";
 import toast, { Toaster } from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { AuthContext } from "../provider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Login = () => {
-  const {
-    signIn,
-    googleSignIn,
-    loading: authLoading,
-  } = useContext(AuthContext);
+  const { signIn, googleSignIn } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
 
-  if (authLoading) return <Loading />;
+  // Function to determine redirect destination
+  const getRedirectPath = () => {
+    // 1️⃣ Prefer React Router state (if available)
+    const stateFrom = location.state?.from?.pathname
+      ? location.state.from.pathname + (location.state.from.search || "")
+      : null;
 
+    if (stateFrom) return stateFrom;
+
+    // 2️⃣ Otherwise, fallback to what was stored in localStorage
+    const stored = localStorage.getItem("redirectAfterLogin");
+    if (stored) return stored;
+
+    // 3️⃣ Default fallback
+    return "/";
+  };
+
+  // 🔐 Handle email-password login
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
       await signIn(email, password);
       toast.success("Login successful!");
-      navigate(from, { replace: true });
+
+      // Determine redirect path
+      const redirectPath = getRedirectPath();
+
+      // Remove saved path after using it
+      localStorage.removeItem("redirectAfterLogin");
+
+      // Navigate back to intended page
+      navigate(redirectPath, { replace: true });
     } catch (err) {
-      toast.error(err.message);
+      const errorMsg =
+        err.code === "auth/invalid-credential" ||
+        err.code === "auth/user-not-found" ||
+        err.code === "auth/wrong-password"
+          ? "Invalid email or password!"
+          : err.message;
+      toast.error(errorMsg);
     } finally {
       setLoading(false);
     }
   };
 
+  // 🟢 Handle Google Sign-In
   const handleGoogle = async () => {
     setLoading(true);
     try {
       await googleSignIn();
       toast.success("Logged in with Google!");
-      navigate(from, { replace: true });
+
+      const redirectPath = getRedirectPath();
+      localStorage.removeItem("redirectAfterLogin");
+
+      navigate(redirectPath, { replace: true });
     } catch (err) {
       toast.error(err.message);
     } finally {
@@ -58,7 +87,10 @@ const Login = () => {
         <h2 className="text-2xl font-bold text-center text-blue-800 mb-6">
           Login to WarmPaws 🐾
         </h2>
+
+        {/* Login Form */}
         <form onSubmit={handleLogin} className="space-y-4">
+          {/* Email Field */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Email
@@ -72,6 +104,7 @@ const Login = () => {
             />
           </div>
 
+          {/* Password Field */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
               Password
@@ -91,6 +124,7 @@ const Login = () => {
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
             </div>
+
             <Link
               to={`/forgot-password?email=${email}`}
               className="text-sm text-blue-600 hover:underline"
@@ -99,6 +133,7 @@ const Login = () => {
             </Link>
           </div>
 
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
@@ -112,12 +147,13 @@ const Login = () => {
           </button>
         </form>
 
+        {/* Google Login Button */}
         <button
           onClick={handleGoogle}
-          disabled={authLoading}
+          disabled={loading}
           className="w-full border border-gray-300 py-2 rounded-lg flex items-center justify-center gap-2 bg-gray-200 hover:bg-gray-300 transition disabled:opacity-70 mt-4"
         >
-          {authLoading ? (
+          {loading ? (
             "Please wait..."
           ) : (
             <>
@@ -126,14 +162,12 @@ const Login = () => {
           )}
         </button>
 
+        {/* Register Link */}
         <p className="mt-4 text-center text-gray-600 text-sm">
           Don’t have an account?{" "}
-          <button
-            onClick={() => navigate("/register")}
-            className="text-blue-600 hover:underline"
-          >
+          <Link to="/register" className="text-blue-600 hover:underline">
             Sign Up
-          </button>
+          </Link>
         </p>
       </div>
     </div>

@@ -99,7 +99,6 @@ const Services = () => {
                 </p>
               </div>
 
-              {/* "Learn More" stays pinned to bottom */}
               <Link
                 to="#"
                 className="mt-6 text-blue-600 font-medium hover:underline"
