@@ -75,7 +75,9 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-1 justify-center">
           <img src="/logo.png" alt="WarmPaws Logo" className="w-15 h-15" />
-          <span className="text-xl font-bold text-blue-800">WarmPaws</span>
+          <span className="text-xl font-bold text-blue-800 animate__animated animate__zoomIn">
+            WarmPaws
+          </span>
         </Link>
 
         {/* Desktop Nav */}

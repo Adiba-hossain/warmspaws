@@ -69,7 +69,7 @@ const Register = () => {
   if (authLoading) return <Loading />;
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-blue-200 to-blue-100 p-4">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-b from-blue-200 to-blue-100 p-4 animate__animated animate__fadeInDown">
       <Toaster position="top-center" />
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
         <h2 className="text-2xl font-bold text-center text-blue-800 mb-6">
