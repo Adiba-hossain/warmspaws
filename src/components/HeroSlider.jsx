@@ -8,6 +8,7 @@ import "../index.css";
 import hero1 from "../assets/hero1.jpg";
 import hero2 from "../assets/hero2.jpg";
 import hero3 from "../assets/hero3.jpg";
+import { Link } from "react-router";
 
 const HeroSlider = () => {
   const slides = [
@@ -34,6 +35,7 @@ const HeroSlider = () => {
   return (
     <div className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden">
       {/* Snowflake Overlay */}
+
       <div className="snowflakes" aria-hidden="true">
         {[...Array(15)].map((_, i) => (
           <div className="snowflake" key={i}>
@@ -43,6 +45,7 @@ const HeroSlider = () => {
       </div>
 
       {/* Swiper Slider */}
+
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
         navigation
@@ -65,9 +68,12 @@ const HeroSlider = () => {
                 <p className="text-lg md:text-xl text-gray-200 mb-6 max-w-2xl">
                   {slide.text}
                 </p>
-                <button className="px-6 py-3 bg-gradient-to-r from-blue-500 to-pink-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition transform hover:from-blue-700 hover:to-pink-700">
+                <Link
+                  to="/services"
+                  className="px-6 py-3 bg-gradient-to-r from-blue-500 to-pink-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition transform hover:from-blue-700 hover:to-pink-700"
+                >
                   Explore Services
-                </button>
+                </Link>
               </div>
             </div>
           </SwiperSlide>

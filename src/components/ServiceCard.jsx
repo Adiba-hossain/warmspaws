@@ -29,7 +29,6 @@ const ServiceCard = ({ service }) => {
 
         <Link
           to={`/service/${serviceId}`}
-          // target="_blank"
           className="mt-4 inline-flex items-center justify-center bg-gradient-to-r from-blue-500 to-pink-500 text-white py-2 rounded-lg   hover:from-blue-700 hover:to-pink-700 transition-all shadow-md"
         >
           <Info className="w-4 h-4 mr-2" />

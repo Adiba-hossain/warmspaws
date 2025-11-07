@@ -4,8 +4,6 @@
 
 @plugin "daisyui";
 
-/* @import "animate.css/animate.min.css"; */
-
 @theme {
   --default-theme: light;
 }
@@ -14,7 +12,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* ❄️ Snowflake Container */
+/* Snowflake Container */
 .snowflakes {
   position: absolute;
   top: 0;
@@ -26,7 +24,7 @@
   z-index: 10;
 }
 
-/* ❄️ Individual Snowflake Style */
+/* Individual Snowflake Style */
 .snowflake {
   position: absolute;
   color: #ffffffcc;
@@ -41,7 +39,7 @@
   opacity: 0.9;
 }
 
-/* 🌀 Fall Animation */
+/* Fall Animation */
 @keyframes fall {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -53,7 +51,7 @@
   }
 }
 
-/* 🌨️ Randomized Snowflake Positions, Speeds & Sizes */
+/* Randomized Snowflake Positions, Speeds & Sizes */
 .snowflake:nth-child(1) {
   left: 5%;
   --start-pos: 0.2;
@@ -160,7 +158,6 @@
   font-size: 1.5rem;
 }
 
-/* 💫 Fix Swiper Fade Overlap Issue */
 .swiper-slide {
   opacity: 0 !important;
   transition: opacity 1s ease-in-out !important;

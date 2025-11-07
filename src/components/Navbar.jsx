@@ -1,4 +1,3 @@
-// Navbar.jsx
 import React, { useState, useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
@@ -39,6 +38,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
+
       <li>
         <NavLink
           to="/services"
@@ -52,6 +52,7 @@ const Navbar = () => {
           Services
         </NavLink>
       </li>
+
       <li>
         <NavLink
           to="/profile"
@@ -108,7 +109,6 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              {/* Use navigate() to force React Router navigation */}
               <button
                 onClick={() => navigate("/login")}
                 className="text-blue-600 font-medium hover:underline"
