@@ -10,7 +10,6 @@ const ProtectedRoute = ({ children }) => {
   if (loading) return <Loading />;
 
   if (!user) {
-    // store full path (pathname + search) only if not already present
     if (!localStorage.getItem("redirectAfterLogin")) {
       const fullPath = location.pathname + (location.search || "");
       localStorage.setItem("redirectAfterLogin", fullPath);

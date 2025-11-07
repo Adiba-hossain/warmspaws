@@ -64,12 +64,10 @@ const Login = () => {
       const result = await googleSignIn();
       const loggedInUser = result.user;
 
-      // Set the user in context immediately
       setUser(loggedInUser);
 
       toast.success("Logged in with Google!");
 
-      // Get the redirect path stored before login or default to "/"
       const redirectPath = getRedirectPath();
       localStorage.removeItem("redirectAfterLogin");
 

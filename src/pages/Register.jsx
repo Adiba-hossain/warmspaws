@@ -61,7 +61,6 @@ const Register = () => {
       const result = await googleSignIn();
       const loggedInUser = result.user;
 
-      // Set context with Google user (includes profile picture)
       setUser(loggedInUser);
 
       toast.success("Logged in with Google!");

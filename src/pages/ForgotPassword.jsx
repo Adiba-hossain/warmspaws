@@ -27,14 +27,11 @@ const ForgotPassword = () => {
       await forgetPassword(email);
       toast.success("Password reset email sent! Opening Gmail...");
 
-      // ✅ Open Gmail in a new tab
       window.open("https://mail.google.com/", "_blank");
 
-      // ✅ Sign out to clear stale auth state but stay on this page
       const auth = getAuth();
       await auth.signOut();
 
-      // ✅ Stop loading and stay on the page
       setLoading(false);
     } catch (err) {
       toast.error(err.message);
